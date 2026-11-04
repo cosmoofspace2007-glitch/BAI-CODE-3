@@ -1,0 +1,35 @@
+public static String demChanVaMax(String s) {
+    if (s == null || s.trim().isEmpty()) {
+        return "0 0"; 
+    }
+    
+    String[] parts = s.trim().split("\\s+");
+    int countEven = 0;
+    int maxVal = Integer.MIN_VALUE;
+    boolean hasNumber = false;
+    
+    for (String p : parts) {
+        if (!p.isEmpty()) {
+            try {
+                int num = Integer.parseInt(p);
+                hasNumber = true;
+                if (num % 2 == 0) {
+                    countEven++;
+                }
+                if (num > maxVal) {
+                    maxVal = num;
+                }
+            } catch (NumberFormatException e) {
+            
+            }
+        }
+    }
+    
+    if (!hasNumber) {
+        return "0 0";
+    }
+    
+    return countEven + " " + maxVal;
+}
+
+
